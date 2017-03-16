@@ -42,3 +42,18 @@ class HomePage(BasePage):
         return "<title>Checkbook NYC</title>" in self.driver.page_source
 
 
+    def revenue_switch(self):
+        """
+        Click the Revenue tab and see if the graph is updated accordingly.
+        """
+        
+        # Each tab has td.<area name>.
+        # TODO: test that each gets class "active" when clicked.
+
+        element = self.driver.find_element(*HomePageLocators.REVENUE_TD)
+        element.click()
+        
+        title = self.driver.find_element(*HomePageLocators.CHART_TITLE)
+        
+        return title.get_property('innerHTML') == 'Revenue'
+
