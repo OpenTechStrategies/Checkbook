@@ -5,8 +5,11 @@ import unittest
 from selenium import webdriver
 import page
 
-class BasicSearch(unittest.TestCase):
-    """A test class to check whether search works in StreetCRM """
+class BasicTest(unittest.TestCase):
+    """
+    A test class to check whether the homepage loads correctly in
+    Checkbook NYC.
+    """
 
     def setUp(self):
         self.driver = webdriver.Chrome()
