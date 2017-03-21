@@ -25,12 +25,12 @@ public class Driver {
         Instance = new FirefoxDriver();
     }
 
-    public static void Initialize(String BrowswerSelection) {
+    public static void Initialize(String BrowserSelection, String OperatingSystemSelection) {
         if (Driver.DriverPath == null) {
 			Driver.GetDriverPath();
 		}
 
-        switch (BrowswerSelection.replace(" ", "").toUpperCase()) {
+        switch (BrowserSelection.replace(" ", "").toUpperCase()) {
             case "FIREFOX":
                 Instance = new ChromeDriver();
                 break;
@@ -41,7 +41,19 @@ public class Driver {
                 break;
 
             case "CHROME":
-                System.setProperty("webdriver.chrome.driver", Driver.DriverPath + "chromedriver.exe");
+                switch(OperatingSystemSelection.replace(" ", "").toUpperCase()) {
+                    case "LINUX":
+                        System.setProperty("webdriver.chrome.driver", Driver.DriverPath + "chromedriver-linux-64");
+                        break;
+                    case "WINDOWS":
+                        System.setProperty("webdriver.chrome.driver", Driver.DriverPath + "chromedriver.exe");
+                        break;
+                    case "MAC":
+                        System.setProperty("webdriver.chrome.driver", Driver.DriverPath + "chromedriver-mac");
+                        break;
+                    default:
+                        break;
+                }
                 Instance = new ChromeDriver();
                 break;
 
