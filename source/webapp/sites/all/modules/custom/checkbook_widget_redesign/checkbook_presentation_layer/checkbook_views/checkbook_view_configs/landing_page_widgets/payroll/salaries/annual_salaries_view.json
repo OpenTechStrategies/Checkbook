@@ -7,16 +7,19 @@
     "table_columns": [
         {
             "labelAlias": "title",
-            "column": "civil_service_title"
+            "column": "civil_service_title",
+            "tooltip": 30
         },
         {
             "labelAlias": "agency_name",
             "column": "agency_name",
-            "derivedColumn": "agency_name_link"
+            "derivedColumn": "agency_name_link",
+            "tooltip": 40
         },
         {
             "labelAlias": "annual_salary",
             "column": "max_annual_salary",
+            "derivedColumn": "max_annual_salary_link",
             "format": "dollar"
         },
         {
