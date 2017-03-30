@@ -24,16 +24,13 @@ public class Driver {
         System.out.println("hello");
         Instance = new FirefoxDriver();
     }
-    public static void Initialize(String BrowswerSelection) {
-       Driver.Initialize(BrowswerSelection, null);
-    }
     
-    public static void Initialize(String BrowswerSelection, String Platform) {
+    public static void Initialize(String BrowserSelection) {
     	if (Driver.DriverPath == null) {
 			Driver.GetDriverPath();
 		}
 
-        switch (BrowswerSelection.replace(" ", "").toUpperCase()) {
+        switch (BrowserSelection.replace(" ", "").toUpperCase()) {
             case "FIREFOX":
                 Instance = new FirefoxDriver();
                 break;
@@ -44,20 +41,6 @@ public class Driver {
                 break;
 
             case "CHROME":
-            	String driver;
-            	Platform = Platform != null ? Platform.replace(" ", "").toUpperCase() : "";
-            	switch (Platform.replace(" ", "").toUpperCase()) {
-	                case "MAC":
-	              	  driver = "chromedriver-mac";
-	                    break;
-	                case "LINUX":
-	              	  driver = "chromedriver-linux-64";
-	                    break;
-	                default:
-	              	  driver = "chromedriver.exe";
-	                    break;
-	  		  }
-                System.setProperty("webdriver.chrome.driver", Driver.DriverPath + driver);
                 Instance = new ChromeDriver();
                 break;
 

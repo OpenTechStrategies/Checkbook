@@ -45,14 +45,13 @@ public class NYCBaseTest{
         NYCDatabaseUtil.connectToDatabase();
 
         String browserSelection = NYCBaseTest.prop.getProperty("BrowserSelection");
-        String platform = NYCBaseTest.prop.getProperty("Platform");
 
         // Disables needless css warnings
         Logger log = Logger.getLogger("com.gargoylesoftware");
         log.setLevel(Level.OFF);
 
         // launches web browser
-        Driver.Initialize(browserSelection, platform);
+        Driver.Initialize(browserSelection);
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         String addDate = sdf.format(new Date());
